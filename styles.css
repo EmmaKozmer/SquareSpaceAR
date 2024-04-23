@@ -1,0 +1,70 @@
+/* Reset some basic elements */
+body, h1, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Use a font similar to the one in the prototype */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+/* Basic body styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Container for boxes */
+.container {
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+/* Basic box styling */
+.box {
+    border-radius: 12px;
+    padding: 1em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Remove mobile browser tap highlight */
+}
+
+/* Large box styles */
+.large-box {
+    background-color: #e07a5f; /* Adjust the color to match the design */
+}
+
+/* Colored boxes */
+.yellow-box {
+    background-color: #f2cc8f;
+}
+
+.green-box {
+    background-color: #81b29a;
+}
+
+.blue-box {
+    background-color: #83c5be;
+}
+
+/* Add responsiveness to layout */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .box {
+        padding: 0.5em;
+    }
+}

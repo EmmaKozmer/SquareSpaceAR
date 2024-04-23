@@ -5,9 +5,6 @@ body, h1, div {
     box-sizing: border-box;
 }
 
-/* Use a font similar to the one in the prototype */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-
 /* Basic body styling */
 body {
     font-family: 'Open Sans', sans-serif;
@@ -26,9 +23,41 @@ body {
     max-width: 400px;
 }
 
+/* Container for the header content */
+.header-content {
+    display: flex;
+    align-items: center; /* This will vertically center the text with the image */
+    justify-content: center; /* This will horizontally center the content */
+}
+
+.logo {
+    height: 50px; /* Adjust the size as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some space between the image and the text */
+}
+
 h1 {
     font-size: 2.5em;
+    font-weight: normal;
     margin-bottom: 1em;
+    /* No changes needed here unless you want to adjust the size or margins */
+}
+
+.button {
+    border-radius: 12px; /* Rounded corners, adjust the pixel value as needed */
+    padding: 20px; /* Padding inside the buttons, adjust as needed */
+    margin: 10px 0; /* Space between buttons, adjust as needed */
+    background-color: #684941; /* Default color, will be overridden by specific button styles */
+    color: #000; /* Text color */
+    font-weight: bold; /* Makes the text bold */
+    text-align: center; /* Centers the text inside the button */
+    cursor: pointer; /* Changes the mouse pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* You can add :hover styles for interactive effect when the mouse hovers over the buttons */
+.button:hover {
+    background-color: #fafafa37; /* Lighter shade for hover effect, adjust the color as needed */
 }
 
 /* Basic box styling */
@@ -42,20 +71,20 @@ h1 {
 
 /* Large box styles */
 .large-box {
-    background-color: #e07a5f; /* Adjust the color to match the design */
+    background-color: #eb7a53; /* Adjust the color to match the design */
 }
 
 /* Colored boxes */
 .yellow-box {
-    background-color: #f2cc8f;
+    background-color: #ffda79;
 }
 
 .green-box {
-    background-color: #81b29a;
+    background-color: #99d882;
 }
 
 .blue-box {
-    background-color: #83c5be;
+    background-color: #b4c3d7;
 }
 
 /* Add responsiveness to layout */

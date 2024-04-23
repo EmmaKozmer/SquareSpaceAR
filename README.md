@@ -1,1 +1,3 @@
 # SquareSpaceAR
+
+Welcome to SquareSpaceAR!

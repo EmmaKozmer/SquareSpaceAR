@@ -1,0 +1,566 @@
+@font-face {
+    font-family: 'Neue Regrade';
+    src: url('../fonts/Neue Regrade Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Regrade';
+    src: url('../fonts/Neue Regrade Bold.otf') format('opentype'); /* Path to the bold font file */
+    font-weight: bold; /* Indicates this is the bold variant */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Regrade';
+    src: url('../fonts/Neue Regrade Italic.otf') format('opentype'); /* Path to the italic font file */
+    font-weight: normal;
+    font-style: italic; /* Indicates this is the italic variant */
+}
+
+
+/* Reset some basic elements */
+body, h1, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+    font-family: 'Neue Regrade', sans-serif;
+    background-color: #000;
+    color: white;
+    text-align: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it at least covers the full viewport height */
+    padding: 50px 0; /* Add some padding at the top and bottom */
+}
+
+/* Container for boxes */
+.container {
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center children vertically */
+    text-align: center;
+    align-items: center; /* Center children horizontally */
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto; /* Center the container horizontally in the body */
+    padding: 0px 0; /* Padding at top and bottom */
+}
+
+/* Container for the header content */
+.header-content {
+    display: flex; /* Enables flexbox */
+    flex-direction: row; /* Elements lay out horizontally */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    text-align: left; /* Aligns the text to the left */
+    width: 100%; /* Full width of its container */
+}
+
+h1 {
+    font-size: 2.6em;
+    font-weight: normal;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    margin-right: 10px; /* Add space between the text and the logo */
+    margin-bottom: 10px; /* Add space below the text */
+}
+
+.logo {
+    /* This will place the logo to the right of the text */
+    order: 2; /* Ensure the logo is positioned after the h1 */
+    height: 80px;
+    width: auto;
+    margin-top: 60px; /* Adjust as needed */
+}
+
+
+.intro-text {
+    text-align: left;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: black; /* Adjust the color to match the design */
+    transition: background-color 0.3s ease;
+    margin: 10px 0; /* Space between buttons */
+    padding: 20px;
+    border-radius: 20px; /* Adjust border-radius for rounded corners */
+}
+
+/* You can add :hover styles for interactive effect when the mouse hovers over the buttons */
+.button:hover {
+    background-color: #fafafa37; /* Lighter shade for hover effect, adjust the color as needed */
+}
+
+/* Basic box styling */
+.box {
+    border-radius: 12px;
+    padding: 1em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Remove mobile browser tap highlight */
+}
+
+/* Large box styles */
+.large-box {
+    background-color: #eb7a53;
+    font: italic bold 24px 'Neue Regrade', sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack the children vertically */
+    align-items: flex-start; /* Align the child elements to the left */
+    justify-content: center;
+    width: 60%; /* Adjust the width as needed */
+    height: auto; /* Adjust if you want the box to grow with content */
+    padding: 10px; /* Add some padding */
+    /* Other styles as needed */
+}
+
+/* Colored boxes */
+.yellow-box {
+    font: normal 16px 'Neue Regrade', sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack the children vertically */
+    align-items: flex-start; /* Align the child elements to the left */
+    justify-content: flex-start;
+    background-color: #ffda79;
+    width: 30%;
+    height: 100px;
+    padding: 10px;
+}
+
+.green-box {
+    font: normal 16px 'Neue Regrade', sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack the children vertically */
+    align-items: flex-start; /* Align the child elements to the left */
+    justify-content: flex-start;
+    background-color: #99d882;
+    width: 30%;
+    height: 100px;
+    width: 30%;
+    height: 100px;
+    padding: 10px; 
+}
+
+.blue-box {
+    font: normal 16px 'Neue Regrade', sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack the children vertically */
+    align-items: flex-start; /* Align the child elements to the left */
+    justify-content: flex-start;
+    background-color: #b4c3d7;
+    width: 27.5%;
+    height: 100px;
+    margin-right: 112px;
+    width: 30%;
+    height: 100px;
+    padding: 10px;
+}
+
+/* Add this new rule for the row container */
+.row {
+    display: flex; /* Enables flexbox */
+    justify-content: space-between; /* Spaces out the children evenly */
+    width: 60%;
+}
+
+.yellow-box, .green-box {
+    flex: 1;
+    margin: 5px;
+}
+
+
+/* This is to ensure that buttons are not stretching beyond the width of the container */
+.container .container { /* Targets the inner container */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers buttons horizontally */
+    width: 100%; /* Full width of parent container */
+}
+
+/* Add responsiveness to layout */
+@media (max-width: 600px) {
+    .header-content {
+        justify-content: center; /* Center items on smaller screens */
+    }
+
+    h1 {
+        text-align: center; /* Center the text on smaller screens */
+        margin-top: 10px; /* Adjust as needed */
+    }
+
+    .logo {
+        margin-top: 10px; /* Adjust as needed */
+    }
+
+    .button {
+        width: 90%; /* Adjust the width on smaller screens */
+        padding: 10px;
+        height: auto; /* Adjust the height as needed, or set it to auto */
+        border-radius: 10px; /* Rounded corners for smaller screens */
+    }
+    
+}
+
+
+
+/* ------ about-us ------- */
+/* Container for the whole page */
+.about-us-container {
+    position: relative;
+    background-color: #b4c3d7; /* Use a light background */
+    color: #000; /* Dark text color for readability */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin: 10px auto; /* Center the container on the page */
+    max-width: 500px; /* Set a max width for the content */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    z-index: 1;
+}
+
+.about-us-container h1 {
+    font-size: 2.6em; /* Larger font size for the heading */
+    font-weight: normal; /* Normal font weight */
+    margin-bottom: 0.6em; /* Space below the heading */
+    margin-top: 1.5em; /* Space above the heading */
+    text-align: left; /* Align the heading to the left */
+}
+
+/* Team member style adjustments for full-width layout */
+.team-member img {
+    /* Adjustments to remove float and properly align the images */
+    display: block; /* Makes the image a block-level element */
+    margin: 0 auto; /* Centers the image */
+    width: 130px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Ensures the image covers its container */
+    position: relative; /* For z-index to work correctly */
+    z-index: 1; /* Ensures the image stays above the pseudo-element */
+}
+
+/* Adjust the layout of the team member to stack vertically */
+.team-member {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2em; /* Adds space between the team member entries */
+}
+
+/* Pseudo-element for decorative background */
+.team-member::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 230px; 
+    height: 230px; 
+    background-image: url('../images/star.png'); /* Path to your star image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%) scale(1.2); /* Centers the star and scales it */
+    z-index: -1;
+}
+
+/* Adjust the heading and paragraphs for team members */
+.team-member h2 {
+    font-size: 1.4em; /* Larger font size for the name */
+    margin: 1.5em 0 0.2em; /* Adjust spacing around the name */
+}
+
+.team-member p {
+    font-size: 1em; /* Regular font size for the description */
+    margin: 0 0 1em; /* Adjust spacing around the description */
+}
+
+.back-button-about-us {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* or 'relative' depending on your layout */
+    top: 20px; /* Position it above the container */
+    left: 4px;
+    padding: 10px;
+    background-color: #b4c3d7; /* Arrow background - white */
+    color: #000000; /* Arrow color - black */
+    border-radius: 50%; /* Make it circular */
+    width: 40px; /* Size of the button */
+    height: 40px; /* Size of the button */
+    font-size: 16px; /* Size of the arrow */
+    text-decoration: none;
+    cursor: pointer; /* Changes the cursor to the pointer hand */
+    transition: background-color 0.3s; /* Smooth transition for the background */
+    z-index: 2; /* Higher than the container to bring it forward */
+}
+
+.back-button:hover {
+    background-color: #b4c3d7; /* Slightly lighter shade on hover */
+}
+
+
+/* ------ contact-us ------- */
+.contact-us-button {
+    display: inline-block; /* Allows width and height to be set */
+    cursor: pointer; /* Changes the cursor to signify this is a clickable item */
+    text-align: center; /* Centers the text inside the link */
+    margin: 20px; /* Add space around the button */
+    /* Additional styles if necessary */
+}
+
+.contact-us-button img {
+    display: block; /* Remove any default inline spacing */
+    width: auto; /* Maintain the original width of the image */
+    height: auto; /* Maintain the original height of the image */
+    transition: transform 0.3s ease; /* Smooth transition for a press effect */
+}
+
+.contact-us-button:hover img {
+    transform: scale(0.95); /* Slightly reduce the size when hovered for a button press effect */
+}
+
+.contact-us-container {
+    position: relative;
+    background-color: #b4c3d7;
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin: 10px auto; /* Center the container on the page */
+    max-width: 500px; /* Set a max width for the content */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    z-index: 1;
+}
+
+.contact-us-container h1 {
+    font-size: 2.6em;
+    font-weight: normal;
+    margin-bottom: 0.6em;
+    margin-top: 1.5em;
+    color: #000; 
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 15px; /* Space between each input field */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Slightly rounded borders for the input fields */
+    outline: none; /* Removes the default focus outline */
+}
+
+.contact-form textarea {
+    height: 100px; /* Sets a fixed height for the textarea */
+    resize: vertical; /* Allows the user to vertically resize the textarea */
+}
+
+.contact-form .submit-button {
+    padding: 15px;
+    background-color: #ffda79; /* Adjust the color to match the screenshot */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px; /* Space above the submit button */
+}
+
+.contact-form .submit-button:hover {
+    background-color: #e0c946;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 0; /* Less padding on smaller screens */
+    }
+    
+    .about-us-container {
+        padding: 10px; /* Less padding inside the container on smaller screens */
+    }
+    
+    .team-member img {
+        width: 120px; /* Smaller images on mobile */
+        height: 120px;
+    }
+    
+    .team-member:before {
+        width: 200px; /* Smaller pseudo-element on mobile */
+        height: 200px;
+    }
+}
+
+
+/* ------ favourites ------- */
+.favourites-container {
+    position: relative;
+    background-color: #99d882; /* Use a light background */
+    color: #000; /* Dark text color for readability */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin: 10px auto; /* Center the container on the page */
+    max-width: 500px; /* Set a max width for the content */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    z-index: 1;
+}
+
+.favourites-container h1 {
+    font-size: 2.6em; /* Larger font size for the heading */
+    font-weight: normal; /* Normal font weight */
+    margin-bottom: 0.6em; /* Space below the heading */
+    margin-top: 1.5em; /* Space above the heading */
+    text-align: left; /* Align the heading to the left */
+}
+
+.back-button-favourites {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* or 'relative' depending on your layout */
+    top: 20px; /* Position it above the container */
+    left: 4px;
+    padding: 10px;
+    background-color: #99d882; /* Arrow background - white */
+    color: #000000; /* Arrow color - black */
+    border-radius: 50%; /* Make it circular */
+    width: 40px; /* Size of the button */
+    height: 40px; /* Size of the button */
+    font-size: 16px; /* Size of the arrow */
+    text-decoration: none;
+    cursor: pointer; /* Changes the cursor to the pointer hand */
+    transition: background-color 0.3s; /* Smooth transition for the background */
+    z-index: 2; /* Higher than the container to bring it forward */
+}
+
+
+/* ------ inspirations ------- */
+.inspirations-container {
+    position: relative;
+    background-color: #ffda79; /* Use a light background */
+    color: #000; /* Dark text color for readability */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin: 10px auto; /* Center the container on the page */
+    max-width: 500px; /* Set a max width for the content */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    z-index: 1;
+}
+
+.inspirations-container h1 {
+    font-size: 2.6em; /* Larger font size for the heading */
+    font-weight: normal; /* Normal font weight */
+    margin-bottom: 0.6em; /* Space below the heading */
+    margin-top: 1.5em; /* Space above the heading */
+    text-align: left; /* Align the heading to the left */
+}
+
+.back-button-inspirations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* or 'relative' depending on your layout */
+    top: 20px; /* Position it above the container */
+    left: 4px;
+    padding: 10px;
+    background-color: #ffda79; /* Arrow background - white */
+    color: #000000; /* Arrow color - black */
+    border-radius: 50%; /* Make it circular */
+    width: 40px; /* Size of the button */
+    height: 40px; /* Size of the button */
+    font-size: 16px; /* Size of the arrow */
+    text-decoration: none;
+    cursor: pointer; /* Changes the cursor to the pointer hand */
+    transition: background-color 0.3s; /* Smooth transition for the background */
+    z-index: 2; /* Higher than the container to bring it forward */
+}
+
+
+/* ------ creative mode ------- */
+.creative-mode-container {
+    position: relative;
+    background-color: #eb7a53; /* Use a light background */
+    color: #000; /* Dark text color for readability */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin: 10px auto; /* Center the container on the page */
+    max-width: 500px; /* Set a max width for the content */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    z-index: 1;
+}
+
+.creative-mode-container h1 {
+    font-size: 2.6em; /* Larger font size for the heading */
+    font-weight: normal; /* Normal font weight */
+    margin-bottom: 0.6em; /* Space below the heading */
+    margin-top: 1.5em; /* Space above the heading */
+    text-align: left; /* Align the heading to the left */
+}
+
+.back-button-creative-mode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* or 'relative' depending on your layout */
+    top: 20px; /* Position it above the container */
+    left: 4px;
+    padding: 10px;
+    background-color: #eb7a53; /* Arrow background - white */
+    color: #000000; /* Arrow color - black */
+    border-radius: 50%; /* Make it circular */
+    width: 40px; /* Size of the button */
+    height: 40px; /* Size of the button */
+    font-size: 16px; /* Size of the arrow */
+    text-decoration: none;
+    cursor: pointer; /* Changes the cursor to the pointer hand */
+    transition: background-color 0.3s; /* Smooth transition for the background */
+    z-index: 2; /* Higher than the container to bring it forward */
+}
+
+/* Choose picture from file system button */
+.button-choose-file {
+    font: normal 16px 'Neue Regrade', sans-serif;
+    display: inline-block;
+    padding: 20px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffda79;
+}
+
+/* Take a new picture button */
+.button-take-picture {
+    font: normal 16px 'Neue Regrade', sans-serif;
+    display: inline-block;
+    padding: 20px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #99d882;
+}

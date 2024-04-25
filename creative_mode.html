@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Mode - My Square Space</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="creative-mode-container">
+        <a href="index.html" class="back-button-creative-mode">&#8592;</a>
+        <h1>Creative Mode.</h1>
+        <p class="intro-text">
+            Here, you can take a picture or upload an image from your file system. You can then place 3D models in the scene and manipulate them.
+        </p>
+        <button id="uploadImage" class="button button-choose-file" style="display:none;">Choose picture from file system</button>
+        <button id="captureImage" class="button button-take-picture" style="display:none;">Take a new picture</button>
+
+
+        <!-- Area where the AR scene will be rendered -->
+        <div id="arScene"></div>
+
+        <!-- Options for selecting 3D models -->
+
+
+        <div id="modelSelection">
+            <!-- Populate with 3D model options -->
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+        // - Detect device type
+        function adjustButtonVisibility() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Check for iOS devices and show the appropriate button (for macOS only upload from file system and for iOS both)
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // iOS device detected
+                document.getElementById('uploadImage').style.display = 'block';
+            } else if (/Macintosh/.test(userAgent) && 'ontouchend' in document) {
+                // iPad with desktop-class browsing (iPadOS)
+                document.getElementById('uploadImage').style.display = 'block';
+            } else if (/Macintosh/.test(userAgent)) {
+                // macOS detected
+                document.getElementById('uploadImage').style.display = 'block';
+            } else {
+                // Other devices
+                document.getElementById('uploadImage').style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', adjustButtonVisibility);
+
+        
+      
+        // - Initialize AR scene
+        // - Handle image upload/capture
+        // - Allow users to manipulate 3D models
+    </script>
+</body>
+</html>

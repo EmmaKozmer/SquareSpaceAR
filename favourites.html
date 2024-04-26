@@ -13,7 +13,66 @@
         <p class="intro-text">
             Below you can find your marked favourites. Enjoy!
         </p>
+        <div class="gallery-container"></div>
     </div>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayFavorites();
+        });
+
+        function displayFavorites() {
+            var galleryContainer = document.querySelector('.gallery-container');
+            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+            
+            Object.keys(favorites).forEach(function(imageName) {
+                if (favorites[imageName]) {
+                    var galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    
+                    var img = document.createElement('img');
+                    img.src = '../images/' + imageName; // make sure the path is correct
+                    img.alt = imageName;
+                    img.className = 'image';
+                    
+                    var starIcon = document.createElement('div');
+                    starIcon.className = 'star-icon favorited';
+                    starIcon.innerHTML = '&#9733;';
+                    starIcon.onclick = function(event) {
+                        toggleFavorite(event, imageName);
+                        // Remove the gallery item if unfavorited
+                        if (!starIcon.classList.contains('favorited')) {
+                            galleryItem.parentNode.removeChild(galleryItem);
+                        }
+                    };
+
+                    galleryItem.appendChild(img);
+                    galleryItem.appendChild(starIcon);
+
+                    galleryContainer.appendChild(galleryItem);
+                }
+            });
+        }
+
+        function toggleFavorite(event, imageName) {
+            event.stopPropagation();
+
+            var star = event.target;
+            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+
+            if (favorites[imageName]) {
+                star.classList.remove('favorited');
+                delete favorites[imageName];
+                star.innerHTML = '&#9734;';
+            } else {
+                star.classList.add('favorited');
+                favorites[imageName] = true;
+                star.innerHTML = '&#9733;';
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+    </script>
 </body>
 </html>

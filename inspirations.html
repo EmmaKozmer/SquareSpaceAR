@@ -10,7 +10,133 @@
     <div class="inspirations-container">
         <a href="index.html" class="back-button-inspirations">&#8592;</a>
         <h1>Inspirations.</h1>
+        <p class="intro-text">
+            Below you can find some inspirations for your next interior design project. Enjoy!
+        </p>
+        <div class="filter-bar">
+            <button onclick="filterImages('all')">Show All</button>
+            <button onclick="filterImages('donator')">Donator Lounge</button>
+            <button onclick="filterImages('tea')">Tea Room</button>
+            <button onclick="filterImages('workspace')">Workspaces</button>
+          </div>
+        <div class="gallery-container">
+            <div class="gallery-item" data-category="tea">
+                <img src="../images/cafeteria1.jpg" alt="Inspiration 1" class="image">
+                <div class="star-icon" onclick="toggleFavorite(event, 'cafeteria1.jpg')">&#9733;</div> <!-- Star symbol as a button -->
+              </div>
+              <div class="gallery-item" data-category="tea">
+                <img src="../images/cafeteria2.jpg" alt="Inspiration 2" class="image">
+                <div class="star-icon" onclick="toggleFavorite(event, 'cafeteria2.jpg')">&#9733;</div>
+              </div>
+              <div class="gallery-item" data-category="donator">
+                <img src="../images/donator.jpg" alt="Inspiration 3" class="image">
+                <div class="star-icon" onclick="toggleFavorite(event, 'donator.jpg')">&#9733;</div> <!-- Star symbol as a button -->
+              </div>
+              <div class="gallery-item" data-category="workspace">
+                <img src="../images/room1.jpg" alt="Inspiration 4" class="image">
+                <div class="star-icon" onclick="toggleFavorite(event, 'room1.jpg')">&#9733;</div>
+              </div>
+              <div class="gallery-item" data-category="workspace">
+                <img src="../images/room2.jpg" alt="Inspiration 5" class="image">
+                <div class="star-icon" onclick="toggleFavorite(event, 'room2.jpg')">&#9733;</div>
+              </div>
+              <div class="gallery-item" data-category="workspace">
+                <img src="../images/study2.jpg" alt="Inspiration 6" class="image">
+                <div class="star-icon" onclick="toggleFavorite(event, 'study2.jpg')">&#9733;</div>
+              </div>
+              <div class="gallery-item" data-category="workspace">
+                <img src="../images/study3.jpg" alt="Inspiration 7" class="image">
+                <div class="star-icon" onclick="toggleFavorite(event, 'study3.jpg')">&#9733;</div>
+              </div>
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
     </div>
     <script src="js/main.js"></script>
+    <script>
+        var modal = document.getElementById('myModal');
+        var modalImg = document.getElementById('img01');
+        var captionText = document.getElementById('caption');
+        var span = document.getElementsByClassName('close')[0];
+
+        document.querySelectorAll('.gallery-item .image').forEach(function(image) {
+            image.onclick = function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            };
+        });
+
+        span.onclick = function() {
+            modal.style.display = 'none';
+        };
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+        modal.style.display = "none";
+        }
+        </script>
+        <script>
+            function toggleFavorite(event, imageName) {
+            event.stopPropagation(); // Prevent clicks from affecting underlying elements
+            
+            var star = event.target;
+            var isFavorited = star.classList.contains('favorited');
+            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+
+            if (isFavorited) {
+                star.classList.remove('favorited');
+                delete favorites[imageName];
+            } else {
+                star.classList.add('favorited');
+                favorites[imageName] = true;
+            }
+
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            }
+
+            function displayFavorites() {
+            // Get the list of favorites from local storage
+            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+            var galleryContainer = document.querySelector('.gallery-container');
+            galleryContainer.innerHTML = ''; // Clear the gallery container
+            
+            // Create image elements for each favorite
+            Object.keys(favorites).forEach(function(imageName) {
+                var img = document.createElement('img');
+                img.src = '../images/' + imageName;
+                img.alt = imageName;
+                img.className = 'gallery-item';
+                galleryContainer.appendChild(img);
+            });
+            }
+        
+            function filterImages(category) {
+            var images = document.querySelectorAll('.gallery-item');
+            images.forEach(function(image) {
+                if (category === 'all' || image.dataset.category === category) {
+                image.style.display = 'inline-block'; // Show image
+                } else {
+                image.style.display = 'none'; // Hide image
+                }
+            });
+            }
+
+            // Optional: Invoke filterImages('all') on page load to show all images
+            document.addEventListener('DOMContentLoaded', function() {
+            filterImages('all');
+            });
+
+    </script>
 </body>
 </html>

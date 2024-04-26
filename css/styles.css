@@ -461,6 +461,7 @@ h1 {
     max-width: 500px; /* Set a max width for the content */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
     z-index: 1;
+    overflow: hidden; /* Ensures no content spills out */
 }
 
 .inspirations-container h1 {
@@ -491,6 +492,161 @@ h1 {
     z-index: 2; /* Higher than the container to bring it forward */
 }
 
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align to the start to handle odd numbers of images */
+    gap: 10px;
+    margin: -10px; /* Offset for negative margins on gallery items */
+}
+  
+.gallery-item {
+    position: relative;
+    width: calc(33.333% - 10px);
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+.image {
+    width: 100%;
+    height: 200px; /* Fixed height */
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+  
+.gallery-item:hover {
+transform: scale(1.03); /* Slightly scale up image on hover */
+box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Larger shadow for hover effect */
+}
+
+.star {
+position: absolute;
+bottom: 10px;
+right: 10px;
+font-size: 30px; /* Adjust the size of the star as needed */
+color: #794d4d; /* White color */
+cursor: pointer;
+z-index: 10;
+}
+  
+.star-icon {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 24px; /* Size of the star icon */
+    color: #05050593; /* Start with black color for the star */
+    cursor: pointer;
+    z-index: 2;
+    user-select: none; /* Prevents the text selection cursor */
+}
+
+.star:hover {
+color: #ffd700; /* Gold color on hover */
+}
+
+.star-icon.favorited {
+    color: #ffbf00; /* Gold color when favorited */
+}
+
+  /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 50px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+
+  .filter-bar {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    gap: 5px;
+  }
+  
+  .filter-bar button {
+    flex: 0 0 auto; /* Prevent buttons from stretching */
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    background: #F5AA66;
+    border-radius: 20px;
+    cursor: pointer; /* Indicates a clickable item */
+    outline: none; /* Removes the outline to improve the styling */
+    transition: background-color 0.3s; /* Smooth background color transition */
+  }
+  
+  .filter-bar button:hover,
+  .filter-bar button.active { /* Added .active class for clicked state */
+    background-color: #EB7A53; /* Orange color on hover and active */
+  }
+  
+  /* Optional: If you want to remove the background color when not active/hovered */
+  .filter-bar button:not(:hover):not(.active) {
+    background-color: #F5AA66; /* Original background color */
+  }
+  
+  
+  @-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+  
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 600px) {
+    .gallery-item {
+        width: calc(50% - 10px); /* Two images per row on smaller screens */
+        max-height: 150px; /* Adjust the height on smaller screens */
+    }
+}
+   
 
 /* ------ creative mode ------- */
 .creative-mode-container {
@@ -564,3 +720,26 @@ h1 {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #99d882;
 }
+
+
+
+
+/* ------ 3D models ------- */
+.model-option img {
+    width: 100px; /* Set a fixed width for the thumbnails */
+    cursor: pointer; /* Indicates that the image is draggable */
+}
+#imageContainer {
+    position: relative; /* Required for absolute positioning inside */
+}
+.draggable-model {
+    position: absolute; /* Allow the model to be positioned over the image */
+    width: 100px; /* Set width for the draggable models */
+    cursor: move; /* Indicates that the model is movable */
+}
+
+#buddha, #table, #armchair {
+    width: 120px;
+    height: auto;
+}
+

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.large-box').addEventListener('click', () => {
-        location.href = 'creative_mode.html';
+        location.href = 'creative_mode_ar.html';
     });
     document.querySelector('.yellow-box').addEventListener('click', () => {
         location.href = 'inspirations.html';

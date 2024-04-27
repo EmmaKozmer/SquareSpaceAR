@@ -13,41 +13,45 @@
         <p class="intro-text">
             Below you can find some inspirations for your next interior design project. Enjoy!
         </p>
+        <div class="upload-bar">
+            <input type="file" id="imageUpload" accept="image/*" style="display:none;">
+            <label for="imageUpload" class="upload-button">Upload Image</label>
+        </div>
         <div class="filter-bar">
             <button onclick="filterImages('all')">Show All</button>
             <button onclick="filterImages('donator')">Donator Lounge</button>
             <button onclick="filterImages('tea')">Tea Room</button>
             <button onclick="filterImages('workspace')">Workspaces</button>
-          </div>
+        </div>
         <div class="gallery-container">
             <div class="gallery-item" data-category="tea">
                 <img src="../images/cafeteria1.jpg" alt="Inspiration 1" class="image">
-                <div class="star-icon" onclick="toggleFavorite(event, 'cafeteria1.jpg')">&#9733;</div> <!-- Star symbol as a button -->
-              </div>
-              <div class="gallery-item" data-category="tea">
+                <div class="star-icon" onclick="toggleFavorite(event, 'cafeteria1.jpg')">&#9733;</div>
+            </div>
+            <div class="gallery-item" data-category="tea">
                 <img src="../images/cafeteria2.jpg" alt="Inspiration 2" class="image">
                 <div class="star-icon" onclick="toggleFavorite(event, 'cafeteria2.jpg')">&#9733;</div>
-              </div>
-              <div class="gallery-item" data-category="donator">
+            </div>
+            <div class="gallery-item" data-category="donator">
                 <img src="../images/donator.jpg" alt="Inspiration 3" class="image">
-                <div class="star-icon" onclick="toggleFavorite(event, 'donator.jpg')">&#9733;</div> <!-- Star symbol as a button -->
-              </div>
-              <div class="gallery-item" data-category="workspace">
+                <div class="star-icon" onclick="toggleFavorite(event, 'donator.jpg')">&#9733;</div>
+            </div>
+            <div class="gallery-item" data-category="workspace">
                 <img src="../images/room1.jpg" alt="Inspiration 4" class="image">
                 <div class="star-icon" onclick="toggleFavorite(event, 'room1.jpg')">&#9733;</div>
-              </div>
-              <div class="gallery-item" data-category="workspace">
+            </div>
+            <div class="gallery-item" data-category="workspace">
                 <img src="../images/room2.jpg" alt="Inspiration 5" class="image">
                 <div class="star-icon" onclick="toggleFavorite(event, 'room2.jpg')">&#9733;</div>
-              </div>
-              <div class="gallery-item" data-category="workspace">
+            </div>
+            <div class="gallery-item" data-category="workspace">
                 <img src="../images/study2.jpg" alt="Inspiration 6" class="image">
                 <div class="star-icon" onclick="toggleFavorite(event, 'study2.jpg')">&#9733;</div>
-              </div>
-              <div class="gallery-item" data-category="workspace">
+            </div>
+            <div class="gallery-item" data-category="workspace">
                 <img src="../images/study3.jpg" alt="Inspiration 7" class="image">
                 <div class="star-icon" onclick="toggleFavorite(event, 'study3.jpg')">&#9733;</div>
-              </div>
+            </div>
         </div>
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -61,82 +65,103 @@
     </div>
     <script src="js/main.js"></script>
     <script>
-        var modal = document.getElementById('myModal');
-        var modalImg = document.getElementById('img01');
-        var captionText = document.getElementById('caption');
-        var span = document.getElementsByClassName('close')[0];
+      var modal = document.getElementById('myModal');
+      var modalImg = document.getElementById('img01');
+      var captionText = document.getElementById('caption');
+      var span = document.getElementsByClassName('close')[0];
+      var fileInput = document.getElementById('imageUpload');
 
-        document.querySelectorAll('.gallery-item .image').forEach(function(image) {
-            image.onclick = function() {
+      document.querySelectorAll('.gallery-item .image').forEach(function(image) {
+          image.onclick = function() {
+              modal.style.display = 'block';
+              modalImg.src = this.src;
+              captionText.innerHTML = this.alt;
+          };
+      });
+
+      span.onclick = function() {
+          modal.style.display = 'none';
+      };
+
+      function toggleFavorite(event, imageName) {
+          event.stopPropagation();
+          var star = event.target;
+          var isFavorited = star.classList.contains('favorited');
+          var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+
+          if (isFavorited) {
+              star.classList.remove('favorited');
+              delete favorites[imageName];
+          } else {
+              star.classList.add('favorited');
+              favorites[imageName] = true;
+          }
+
+          localStorage.setItem('favorites', JSON.stringify(favorites));
+      }
+
+      function filterImages(category) {
+          var images = document.querySelectorAll('.gallery-item');
+          images.forEach(function(image) {
+              if (category === 'all' || image.dataset.category === category) {
+                  image.style.display = 'inline-block';
+              } else {
+                  image.style.display = 'none';
+              }
+          });
+      }
+
+      function addImageToGallery() {
+    var file = fileInput.files[0];
+    if (file && file.type.startsWith('image/')) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var imgElement = document.createElement('img');
+            imgElement.src = e.target.result;
+            imgElement.alt = 'Uploaded Image';
+            imgElement.className = 'image'; // Ensure it matches the class for styling
+
+            var divElement = document.createElement('div');
+            divElement.className = 'gallery-item';
+            divElement.appendChild(imgElement);
+
+            var starIcon = document.createElement('div');
+            starIcon.className = 'star-icon';
+            starIcon.innerHTML = '&#9733;';
+            starIcon.onclick = function(event) {
+                toggleFavorite(event, 'new-uploaded.jpg'); // Assumes handling of unique naming if needed
+            };
+            divElement.appendChild(starIcon);
+
+            document.querySelector('.gallery-container').appendChild(divElement);
+
+            // Attach the modal functionality to the new image
+            imgElement.onclick = function() {
                 modal.style.display = 'block';
                 modalImg.src = this.src;
                 captionText.innerHTML = this.alt;
             };
-        });
-
-        span.onclick = function() {
-            modal.style.display = 'none';
         };
-        
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() { 
-        modal.style.display = "none";
-        }
-        </script>
-        <script>
-            function toggleFavorite(event, imageName) {
-            event.stopPropagation(); // Prevent clicks from affecting underlying elements
-            
-            var star = event.target;
-            var isFavorited = star.classList.contains('favorited');
-            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+        reader.readAsDataURL(file);
+    } else {
+        alert('Please select an image file.');
+    }
+}
 
-            if (isFavorited) {
-                star.classList.remove('favorited');
-                delete favorites[imageName];
-            } else {
-                star.classList.add('favorited');
-                favorites[imageName] = true;
-            }
+      fileInput.addEventListener('change', addImageToGallery);
 
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            }
+      document.addEventListener('DOMContentLoaded', function() {
+          filterImages('all');
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+    // Check if we need to trigger the image upload
+    if (localStorage.getItem('triggerUpload') === 'true') {
+        document.getElementById('imageUpload').click(); // Trigger the file input click
+        localStorage.removeItem('triggerUpload'); // Clear the flag to avoid repeated triggers
+    }
+    filterImages('all'); // Existing function to filter images on load
+});
 
-            function displayFavorites() {
-            // Get the list of favorites from local storage
-            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
-            var galleryContainer = document.querySelector('.gallery-container');
-            galleryContainer.innerHTML = ''; // Clear the gallery container
-            
-            // Create image elements for each favorite
-            Object.keys(favorites).forEach(function(imageName) {
-                var img = document.createElement('img');
-                img.src = '../images/' + imageName;
-                img.alt = imageName;
-                img.className = 'gallery-item';
-                galleryContainer.appendChild(img);
-            });
-            }
-        
-            function filterImages(category) {
-            var images = document.querySelectorAll('.gallery-item');
-            images.forEach(function(image) {
-                if (category === 'all' || image.dataset.category === category) {
-                image.style.display = 'inline-block'; // Show image
-                } else {
-                image.style.display = 'none'; // Hide image
-                }
-            });
-            }
-
-            // Optional: Invoke filterImages('all') on page load to show all images
-            document.addEventListener('DOMContentLoaded', function() {
-            filterImages('all');
-            });
-
-    </script>
+  </script>
 </body>
 </html>

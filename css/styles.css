@@ -43,38 +43,36 @@ body {
     display: flex; /* Enable flexbox */
     flex-direction: column; /* Stack children vertically */
     justify-content: center; /* Center children vertically */
-    text-align: center;
     align-items: center; /* Center children horizontally */
     width: 90%;
     max-width: 400px;
     margin: 0 auto; /* Center the container horizontally in the body */
-    padding: 0px 0; /* Padding at top and bottom */
 }
 
 /* Container for the header content */
 .header-content {
     display: flex; /* Enables flexbox */
-    flex-direction: row; /* Elements lay out horizontally */
     justify-content: center; /* Centers content horizontally */
     align-items: center; /* Centers content vertically */
     text-align: left; /* Aligns the text to the left */
     width: 100%; /* Full width of its container */
+    max-width: 50%;
 }
 
 h1 {
     font-size: 2.6em;
     font-weight: normal;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-    margin-right: 10px; /* Add space between the text and the logo */
-    margin-bottom: 10px; /* Add space below the text */
+    margin-right: 10px;
+    text-align: left; /* Ensures header is left-aligned */
 }
 
 .logo {
-    /* This will place the logo to the right of the text */
-    order: 2; /* Ensure the logo is positioned after the h1 */
+    order: 2;
     height: 80px;
-    width: auto;
-    margin-top: 60px; /* Adjust as needed */
+    width: 100px;
+    max-width: auto;
+    margin-top: 60px;
 }
 
 
@@ -93,9 +91,11 @@ h1 {
     cursor: pointer;
     color: black; /* Adjust the color to match the design */
     transition: background-color 0.3s ease;
-    margin: 10px 0; /* Space between buttons */
+    margin: 10px 0;
     padding: 20px;
-    border-radius: 20px; /* Adjust border-radius for rounded corners */
+    border-radius: 20px;
+    width: 100%; /* Ensure full width */
+    max-width: 300px; /* Prevents over-scaling */
 }
 
 /* You can add :hover styles for interactive effect when the mouse hovers over the buttons */
@@ -120,97 +120,62 @@ h1 {
     flex-direction: column; /* Stack the children vertically */
     align-items: flex-start; /* Align the child elements to the left */
     justify-content: center;
-    width: 60%; /* Adjust the width as needed */
-    height: auto; /* Adjust if you want the box to grow with content */
+    margin: 0 auto; /* Center these boxes */
+    margin-top: 10px;
+    max-width: 70%; /* Fixed max width */
+    width: 70%; /* Adjust the width as needed */
+    height: 110px; /* Adjust if you want the box to grow with content */
     padding: 10px; /* Add some padding */
-    /* Other styles as needed */
-}
-
-/* Colored boxes */
-.yellow-box {
-    font: normal 16px 'Neue Regrade', sans-serif;
-    display: flex;
-    flex-direction: column; /* Stack the children vertically */
-    align-items: flex-start; /* Align the child elements to the left */
-    justify-content: flex-start;
-    background-color: #ffda79;
-    width: 30%;
-    height: 100px;
-    padding: 10px;
-}
-
-.green-box {
-    font: normal 16px 'Neue Regrade', sans-serif;
-    display: flex;
-    flex-direction: column; /* Stack the children vertically */
-    align-items: flex-start; /* Align the child elements to the left */
-    justify-content: flex-start;
-    background-color: #99d882;
-    width: 30%;
-    height: 100px;
-    width: 30%;
-    height: 100px;
-    padding: 10px; 
-}
-
-.blue-box {
-    font: normal 16px 'Neue Regrade', sans-serif;
-    display: flex;
-    flex-direction: column; /* Stack the children vertically */
-    align-items: flex-start; /* Align the child elements to the left */
-    justify-content: flex-start;
-    background-color: #b4c3d7;
-    width: 27.5%;
-    height: 100px;
-    margin-right: 112px;
-    width: 30%;
-    height: 100px;
-    padding: 10px;
-}
-
-/* Add this new rule for the row container */
-.row {
-    display: flex; /* Enables flexbox */
-    justify-content: space-between; /* Spaces out the children evenly */
-    width: 60%;
 }
 
 .yellow-box, .green-box {
-    flex: 1;
-    margin: 5px;
-}
-
-
-/* This is to ensure that buttons are not stretching beyond the width of the container */
-.container .container { /* Targets the inner container */
+    font: normal 18px 'Neue Regrade', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers buttons horizontally */
-    width: 100%; /* Full width of parent container */
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: calc(50% - 5px);
+    max-width: calc(50% - 5px);
+    height: 110px;
+    padding: 10px;
+    margin-right: 10px; /* Reduced right margin for a smaller gap */
+    margin-left: 0;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    background-color: #ffda79; /* Default background for both, overridden for green */
 }
 
-/* Add responsiveness to layout */
-@media (max-width: 600px) {
-    .header-content {
-        justify-content: center; /* Center items on smaller screens */
-    }
+.yellow-box {
+    background-color: #ffda79;
+    margin-right: 0;
+}
 
-    h1 {
-        text-align: center; /* Center the text on smaller screens */
-        margin-top: 10px; /* Adjust as needed */
-    }
+.green-box {
+    background-color: #99d882;
+    margin-right: 0;
+}
 
-    .logo {
-        margin-top: 10px; /* Adjust as needed */
-    }
+.blue-box {
+    font: normal 18px 'Neue Regrade', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: #b4c3d7; /* Blue box background */
+    width: calc(50% - 5px); /* Adjust width to be the same as yellow and green */
+    height: 110px; /* Match the height of yellow and green */
+    padding: 10px; /* Match padding */
+    /* margin-left: auto; */ /* This will push the box to the right side */
+    box-sizing: border-box;
+    margin: 0px;
+}
 
-    .button {
-        width: 90%; /* Adjust the width on smaller screens */
-        padding: 10px;
-        height: auto; /* Adjust the height as needed, or set it to auto */
-        border-radius: 10px; /* Rounded corners for smaller screens */
-    }
-    
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap */
+    gap: 10px; /* Space between wrapped items */
+    justify-content: flex-start; /* Align to the start of the container */
+    width: 70%; /* Adjust as needed to fit the large box width */
+    margin: 0 auto; /* Center the container */
 }
 
 
@@ -388,10 +353,7 @@ h1 {
 
 /* Responsive Design Adjustments */
 @media (max-width: 600px) {
-    body {
-        padding: 20px 0; /* Less padding on smaller screens */
-    }
-    
+
     .about-us-container {
         padding: 10px; /* Less padding inside the container on smaller screens */
     }
@@ -404,6 +366,19 @@ h1 {
     .team-member:before {
         width: 200px; /* Smaller pseudo-element on mobile */
         height: 200px;
+    }
+
+    .logo {
+        order: 2;
+        height: 80px;
+        width: 100px;
+        max-width: auto;
+        margin-top: 60px;
+    }
+
+    .yellow-box, .green-box {
+        width: 50%; /* each takes half of the space */
+        margin-right: 0; /* remove margin-right if it causes wrapping */
     }
 }
 
@@ -742,6 +717,29 @@ color: #ffd700; /* Gold color on hover */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #99d882;
 }
+
+.thumbnails-container {
+    display: flex;
+    justify-content: space-around; /* This will space the thumbnails evenly */
+    align-items: center; /* This will align thumbnails vertically */
+    flex-wrap: wrap; /* Allow thumbnails to wrap onto the next line on smaller screens */
+    margin: 20px 0; /* Add some vertical space around the thumbnails container */
+}
+
+.model-link {
+    flex: 1; /* Give each link a flexible width */
+    max-width: 120px; /* Maximum width for each thumbnail */
+    margin: 5px; /* Add a little margin around each thumbnail */
+    text-align: center; /* Center the text (and indirectly, the image) */
+    box-sizing: border-box; /* Include padding and borders in the width */
+}
+
+.model-option {
+    width: 100px; 
+    height: 100px; 
+    object-fit: contain; 
+}
+
 
 .emmibutton {
     padding: 15px;

@@ -112,56 +112,56 @@
       }
 
       function addImageToGallery() {
-    var file = fileInput.files[0];
-    if (file && file.type.startsWith('image/')) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var imgElement = document.createElement('img');
-            imgElement.src = e.target.result;
-            imgElement.alt = 'Uploaded Image';
-            imgElement.className = 'image'; // Ensure it matches the class for styling
+            var file = fileInput.files[0];
+            if (file && file.type.startsWith('image/')) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    
+                    var imgElement = document.createElement('img');
+                    imgElement.src = e.target.result;
+                    imgElement.alt = 'Uploaded Image';
+                    imgElement.className = 'image'; // Ensure it matches the class for styling
 
-            var divElement = document.createElement('div');
-            divElement.className = 'gallery-item';
-            divElement.appendChild(imgElement);
+                    var divElement = document.createElement('div');
+                    divElement.className = 'gallery-item';
+                    divElement.appendChild(imgElement);
 
-            var starIcon = document.createElement('div');
-            starIcon.className = 'star-icon';
-            starIcon.innerHTML = '&#9733;';
-            starIcon.onclick = function(event) {
-                toggleFavorite(event, 'new-uploaded.jpg'); // Assumes handling of unique naming if needed
-            };
-            divElement.appendChild(starIcon);
+                    var starIcon = document.createElement('div');
+                    starIcon.className = 'star-icon';
+                    starIcon.innerHTML = '&#9733;';
+                    starIcon.onclick = function(event) {
+                        toggleFavorite(event, 'new-uploaded.jpg'); // Assumes handling of unique naming if needed
+                    };
+                    divElement.appendChild(starIcon);
 
-            document.querySelector('.gallery-container').appendChild(divElement);
+                    document.querySelector('.gallery-container').appendChild(divElement);
 
-            // Attach the modal functionality to the new image
-            imgElement.onclick = function() {
-                modal.style.display = 'block';
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
-            };
-        };
-        reader.readAsDataURL(file);
-    } else {
-        alert('Please select an image file.');
-    }
-}
+                    // Attach the modal functionality to the new image
+                    imgElement.onclick = function() {
+                        modal.style.display = 'block';
+                        modalImg.src = this.src;
+                        captionText.innerHTML = this.alt;
+                    };
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select an image file.');
+            }
+        }
 
-      fileInput.addEventListener('change', addImageToGallery);
+            fileInput.addEventListener('change', addImageToGallery);
 
-      document.addEventListener('DOMContentLoaded', function() {
-          filterImages('all');
-      });
-      document.addEventListener('DOMContentLoaded', function() {
-    // Check if we need to trigger the image upload
-    if (localStorage.getItem('triggerUpload') === 'true') {
-        document.getElementById('imageUpload').click(); // Trigger the file input click
-        localStorage.removeItem('triggerUpload'); // Clear the flag to avoid repeated triggers
-    }
-    filterImages('all'); // Existing function to filter images on load
-});
-
+            document.addEventListener('DOMContentLoaded', function() {
+                filterImages('all');
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+            // Check if we need to trigger the image upload
+            if (localStorage.getItem('triggerUpload') === 'true') {
+                document.getElementById('imageUpload').click(); // Trigger the file input click
+                localStorage.removeItem('triggerUpload'); // Clear the flag to avoid repeated triggers
+            }
+            filterImages('all'); // Existing function to filter images on load
+        });
   </script>
 </body>
 </html>

@@ -125,11 +125,11 @@
         }
         
         function addImageToGallery() {
-            var file = fileInput.files[0];
+            var file = fileInput.files[0]; // Ensure this element is correctly referenced and triggered
             if (file && file.type.startsWith('image/')) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    var newImageName = 'uploaded_' + Date.now(); 
+                    var newImageName = 'uploaded_' + Date.now(); // Unique identifier for each uploaded image
                     saveImageToLocalStorage(e.target.result, newImageName);
                     addNewImageToGallery(e.target.result, newImageName);
                 };
@@ -138,6 +138,9 @@
                 alert('Please select an image file.');
             }
         }
+
+        fileInput.addEventListener('change', addImageToGallery); // Ensure this listener is correctly set up
+
         
         function saveImageToLocalStorage(data, name) {
             var images = JSON.parse(localStorage.getItem('galleryImages')) || {};

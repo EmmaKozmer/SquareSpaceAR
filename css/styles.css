@@ -7,18 +7,17 @@
 
 @font-face {
     font-family: 'Neue Regrade';
-    src: url('../fonts/Neue Regrade Bold.otf') format('opentype'); /* Path to the bold font file */
-    font-weight: bold; /* Indicates this is the bold variant */
+    src: url('../fonts/Neue Regrade Bold.otf') format('opentype'); 
+    font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Neue Regrade';
-    src: url('../fonts/Neue Regrade Italic.otf') format('opentype'); /* Path to the italic font file */
+    src: url('../fonts/Neue Regrade Italic.otf') format('opentype'); 
     font-weight: normal;
-    font-style: italic; /* Indicates this is the italic variant */
+    font-style: italic; 
 }
-
 
 /* Reset some basic elements */
 body, h1, div {
@@ -34,28 +33,28 @@ body {
     color: white;
     text-align: center;
     align-items: center;
-    min-height: 100vh; /* Ensure it at least covers the full viewport height */
-    padding: 50px 0; /* Add some padding at the top and bottom */
+    min-height: 100vh; 
+    padding: 50px 0;
 }
 
 /* Container for boxes */
 .container {
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center children vertically */
-    align-items: center; /* Center children horizontally */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
     width: 90%;
     max-width: 400px;
-    margin: 0 auto; /* Center the container horizontally in the body */
+    margin: 0 auto; 
 }
 
 /* Container for the header content */
 .header-content {
-    display: flex; /* Enables flexbox */
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    text-align: left; /* Aligns the text to the left */
-    width: 100%; /* Full width of its container */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: left; 
+    width: 100%; 
     max-width: 50%;
 }
 
@@ -64,7 +63,7 @@ h1 {
     font-weight: normal;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     margin-right: 10px;
-    text-align: left; /* Ensures header is left-aligned */
+    text-align: left; 
 }
 
 .logo {
@@ -89,18 +88,17 @@ h1 {
     text-align: center;
     font-weight: bold;
     cursor: pointer;
-    color: black; /* Adjust the color to match the design */
+    color: black; 
     transition: background-color 0.3s ease;
     margin: 10px 0;
     padding: 20px;
     border-radius: 20px;
-    width: 100%; /* Ensure full width */
-    max-width: 300px; /* Prevents over-scaling */
+    width: 100%; 
+    max-width: 300px;
 }
 
-/* You can add :hover styles for interactive effect when the mouse hovers over the buttons */
 .button:hover {
-    background-color: #fafafa37; /* Lighter shade for hover effect, adjust the color as needed */
+    background-color: #fafafa37; 
 }
 
 /* Basic box styling */
@@ -109,7 +107,7 @@ h1 {
     padding: 1em;
     margin-bottom: 1em;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent; /* Remove mobile browser tap highlight */
+    -webkit-tap-highlight-color: transparent; 
 }
 
 /* Large box styles */
@@ -117,15 +115,15 @@ h1 {
     background-color: #eb7a53;
     font: italic bold 24px 'Neue Regrade', sans-serif;
     display: flex;
-    flex-direction: column; /* Stack the children vertically */
-    align-items: flex-start; /* Align the child elements to the left */
+    flex-direction: column; 
+    align-items: flex-start; 
     justify-content: center;
-    margin: 0 auto; /* Center these boxes */
+    margin: 0 auto; 
     margin-top: 10px;
-    max-width: 70%; /* Fixed max width */
-    width: 70%; /* Adjust the width as needed */
-    height: 110px; /* Adjust if you want the box to grow with content */
-    padding: 10px; /* Add some padding */
+    max-width: 70%;
+    width: 70%;
+    height: 110px; 
+    padding: 10px;
 }
 
 .yellow-box, .green-box {
@@ -138,10 +136,10 @@ h1 {
     max-width: calc(50% - 5px);
     height: 110px;
     padding: 10px;
-    margin-right: 10px; /* Reduced right margin for a smaller gap */
+    margin-right: 10px; 
     margin-left: 0;
-    box-sizing: border-box; /* Ensures padding is included in the width */
-    background-color: #ffda79; /* Default background for both, overridden for green */
+    box-sizing: border-box; 
+    background-color: #ffda79; 
 }
 
 .yellow-box {
@@ -160,69 +158,64 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: #b4c3d7; /* Blue box background */
-    width: calc(50% - 5px); /* Adjust width to be the same as yellow and green */
-    height: 110px; /* Match the height of yellow and green */
-    padding: 10px; /* Match padding */
-    /* margin-left: auto; */ /* This will push the box to the right side */
+    background-color: #b4c3d7; 
+    width: calc(50% - 5px); 
+    height: 110px; 
+    padding: 10px; 
     box-sizing: border-box;
     margin: 0px;
 }
 
 .row {
     display: flex;
-    flex-wrap: wrap; /* Allow boxes to wrap */
-    gap: 10px; /* Space between wrapped items */
-    justify-content: flex-start; /* Align to the start of the container */
-    width: 70%; /* Adjust as needed to fit the large box width */
-    margin: 0 auto; /* Center the container */
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: flex-start; 
+    width: 70%; 
+    margin: 0 auto; 
 }
 
 
-
 /* ------ about-us ------- */
-/* Container for the whole page */
 .about-us-container {
     position: relative;
-    background-color: #b4c3d7; /* Use a light background */
-    color: #000; /* Dark text color for readability */
-    border-radius: 20px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
-    margin: 10px auto; /* Center the container on the page */
-    max-width: 500px; /* Set a max width for the content */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    background-color: #b4c3d7;
+    color: #000;
+    border-radius: 20px;
+    padding: 20px; 
+    margin: 10px auto;
+    max-width: 500px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
     z-index: 1;
 }
 
 .about-us-container h1 {
-    font-size: 2.6em; /* Larger font size for the heading */
-    font-weight: normal; /* Normal font weight */
-    margin-bottom: 0.6em; /* Space below the heading */
-    margin-top: 1.5em; /* Space above the heading */
-    text-align: left; /* Align the heading to the left */
+    font-size: 2.6em; 
+    font-weight: normal; 
+    margin-bottom: 0.6em; 
+    margin-top: 1.5em;
+    text-align: left; 
 }
 
 /* Team member style adjustments for full-width layout */
 .team-member img {
-    /* Adjustments to remove float and properly align the images */
-    display: block; /* Makes the image a block-level element */
-    margin: 0 auto; /* Centers the image */
-    width: 130px; /* Adjust as needed */
-    height: 150px; /* Adjust as needed */
-    border-radius: 50%; /* Circular image */
-    object-fit: cover; /* Ensures the image covers its container */
-    position: relative; /* For z-index to work correctly */
-    z-index: 1; /* Ensures the image stays above the pseudo-element */
+    display: block; 
+    margin: 0 auto;
+    width: 130px;
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    position: relative; 
+    z-index: 1; 
 }
 
 /* Adjust the layout of the team member to stack vertically */
 .team-member {
     position: relative;
     text-align: center;
-    margin-bottom: 2em; /* Adds space between the team member entries */
+    margin-bottom: 2em;
 }
 
-/* Pseudo-element for decorative background */
 .team-member::before {
     content: '';
     position: absolute;
@@ -230,78 +223,76 @@ h1 {
     left: 50%;
     width: 230px; 
     height: 230px; 
-    background-image: url('../images/star.png'); /* Path to your star image */
+    background-image: url('../images/star.png'); 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    transform: translate(-50%, -50%) scale(1.2); /* Centers the star and scales it */
+    transform: translate(-50%, -50%) scale(1.2);
     z-index: -1;
 }
 
-/* Adjust the heading and paragraphs for team members */
 .team-member h2 {
-    font-size: 1.4em; /* Larger font size for the name */
-    margin: 1.5em 0 0.2em; /* Adjust spacing around the name */
+    font-size: 1.4em; 
+    margin: 1.5em 0 0.2em; 
 }
 
 .team-member p {
-    font-size: 1em; /* Regular font size for the description */
-    margin: 0 0 1em; /* Adjust spacing around the description */
+    font-size: 1em; 
+    margin: 0 0 1em; 
 }
 
 .back-button-about-us {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* or 'relative' depending on your layout */
-    top: 20px; /* Position it above the container */
+    position: absolute; 
+    top: 20px;
     left: 4px;
     padding: 10px;
-    background-color: #b4c3d7; /* Arrow background - white */
-    color: #000000; /* Arrow color - black */
-    border-radius: 50%; /* Make it circular */
-    width: 40px; /* Size of the button */
-    height: 40px; /* Size of the button */
-    font-size: 16px; /* Size of the arrow */
+    background-color: #b4c3d7; 
+    color: #000000;
+    border-radius: 50%; 
+    width: 40px; 
+    height: 40px;
+    font-size: 16px;
     text-decoration: none;
-    cursor: pointer; /* Changes the cursor to the pointer hand */
-    transition: background-color 0.3s; /* Smooth transition for the background */
-    z-index: 2; /* Higher than the container to bring it forward */
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    z-index: 2; 
 }
 
 .back-button:hover {
-    background-color: #b4c3d7; /* Slightly lighter shade on hover */
+    background-color: #b4c3d7; 
 }
 
 
 /* ------ contact-us ------- */
 .contact-us-button {
-    display: inline-block; /* Allows width and height to be set */
-    cursor: pointer; /* Changes the cursor to signify this is a clickable item */
-    text-align: center; /* Centers the text inside the link */
-    margin: 20px; /* Add space around the button */
-    /* Additional styles if necessary */
+    display: inline-block;
+    cursor: pointer; 
+    text-align: center; 
+    margin: 20px;
 }
 
 .contact-us-button img {
-    display: block; /* Remove any default inline spacing */
-    width: auto; /* Maintain the original width of the image */
-    height: auto; /* Maintain the original height of the image */
-    transition: transform 0.3s ease; /* Smooth transition for a press effect */
+    display: block; 
+    width: auto;
+    height: auto; 
+    transition: transform 0.3s ease;
 }
 
 .contact-us-button:hover img {
-    transform: scale(0.95); /* Slightly reduce the size when hovered for a button press effect */
+    transform: scale(0.95); 
 }
 
 .contact-us-container {
     position: relative;
     background-color: #b4c3d7;
-    border-radius: 20px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
-    margin: 10px auto; /* Center the container on the page */
-    max-width: 500px; /* Set a max width for the content */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    border-radius: 20px; 
+    padding: 20px; 
+    margin: 10px auto;
+    max-width: 500px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
     z-index: 1;
 }
 
@@ -324,47 +315,60 @@ h1 {
 .contact-form textarea {
     font-size: 16px;
     padding: 10px;
-    margin-bottom: 15px; /* Space between each input field */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Slightly rounded borders for the input fields */
-    outline: none; /* Removes the default focus outline */
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    outline: none;
 }
 
 .contact-form textarea {
-    height: 100px; /* Sets a fixed height for the textarea */
-    resize: vertical; /* Allows the user to vertically resize the textarea */
+    height: 100px; 
+    resize: vertical; 
 }
 
 .contact-form .submit-button {
     padding: 15px;
-    background-color: #ffda79; /* Adjust the color to match the screenshot */
+    background-color: #ffda79; 
     border: none;
-    border-radius: 5px; /* Rounded corners for the button */
+    border-radius: 5px; 
     font-size: 16px;
     color: #000;
     cursor: pointer;
     transition: background-color 0.2s;
-    margin-top: 10px; /* Space above the submit button */
+    margin-top: 10px; 
 }
 
 .contact-form .submit-button:hover {
     background-color: #e0c946;
 }
 
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
 /* Responsive Design Adjustments */
 @media (max-width: 600px) {
 
     .about-us-container {
-        padding: 10px; /* Less padding inside the container on smaller screens */
+        padding: 10px; 
     }
     
     .team-member img {
-        width: 120px; /* Smaller images on mobile */
+        width: 120px; 
         height: 120px;
     }
     
     .team-member:before {
-        width: 200px; /* Smaller pseudo-element on mobile */
+        width: 200px; 
         height: 200px;
     }
 
@@ -377,102 +381,101 @@ h1 {
     }
 
     .yellow-box, .green-box {
-        width: 50%; /* each takes half of the space */
-        margin-right: 0; /* remove margin-right if it causes wrapping */
+        width: 50%; 
+        margin-right: 0; 
     }
 }
-
 
 /* ------ favourites ------- */
 .favourites-container {
     position: relative;
-    background-color: #99d882; /* Use a light background */
-    color: #000; /* Dark text color for readability */
-    border-radius: 20px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
-    margin: 10px auto; /* Center the container on the page */
-    max-width: 500px; /* Set a max width for the content */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    background-color: #99d882; 
+    color: #000; 
+    border-radius: 20px; 
+    padding: 20px; 
+    margin: 10px auto; 
+    max-width: 500px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
     z-index: 1;
 }
 
 .favourites-container h1 {
-    font-size: 2.6em; /* Larger font size for the heading */
-    font-weight: normal; /* Normal font weight */
-    margin-bottom: 0.6em; /* Space below the heading */
-    margin-top: 1.5em; /* Space above the heading */
-    text-align: left; /* Align the heading to the left */
+    font-size: 2.6em;
+    font-weight: normal; 
+    margin-bottom: 0.6em;
+    margin-top: 1.5em; 
+    text-align: left;
 }
 
 .back-button-favourites {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* or 'relative' depending on your layout */
-    top: 20px; /* Position it above the container */
+    position: absolute; 
+    top: 20px; 
     left: 4px;
     padding: 10px;
-    background-color: #99d882; /* Arrow background - white */
-    color: #000000; /* Arrow color - black */
-    border-radius: 50%; /* Make it circular */
-    width: 40px; /* Size of the button */
-    height: 40px; /* Size of the button */
-    font-size: 16px; /* Size of the arrow */
+    background-color: #99d882; 
+    color: #000000; 
+    border-radius: 50%; 
+    width: 40px; 
+    height: 40px; 
+    font-size: 16px; 
     text-decoration: none;
-    cursor: pointer; /* Changes the cursor to the pointer hand */
-    transition: background-color 0.3s; /* Smooth transition for the background */
-    z-index: 2; /* Higher than the container to bring it forward */
+    cursor: pointer; 
+    transition: background-color 0.3s;
+    z-index: 2; 
 }
 
 
 /* ------ inspirations ------- */
 .inspirations-container {
     position: relative;
-    background-color: #ffda79; /* Use a light background */
-    color: #000; /* Dark text color for readability */
-    border-radius: 20px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
-    margin: 10px auto; /* Center the container on the page */
-    max-width: 500px; /* Set a max width for the content */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    background-color: #ffda79; 
+    color: #000; 
+    border-radius: 20px; 
+    padding: 20px; 
+    margin: 10px auto; 
+    max-width: 500px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
     z-index: 1;
-    overflow: hidden; /* Ensures no content spills out */
+    overflow: hidden; 
 }
 
 .inspirations-container h1 {
-    font-size: 2.6em; /* Larger font size for the heading */
-    font-weight: normal; /* Normal font weight */
-    margin-bottom: 0.6em; /* Space below the heading */
-    margin-top: 1.5em; /* Space above the heading */
-    text-align: left; /* Align the heading to the left */
+    font-size: 2.6em; 
+    font-weight: normal; 
+    margin-bottom: 0.6em; 
+    margin-top: 1.5em; 
+    text-align: left; 
 }
 
 .back-button-inspirations {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* or 'relative' depending on your layout */
-    top: 20px; /* Position it above the container */
+    position: absolute; 
+    top: 20px; 
     left: 4px;
     padding: 10px;
-    background-color: #ffda79; /* Arrow background - white */
-    color: #000000; /* Arrow color - black */
-    border-radius: 50%; /* Make it circular */
-    width: 40px; /* Size of the button */
-    height: 40px; /* Size of the button */
-    font-size: 16px; /* Size of the arrow */
+    background-color: #ffda79; 
+    color: #000000; 
+    border-radius: 50%;
+    width: 40px;
+    height: 40px; 
+    font-size: 16px; 
     text-decoration: none;
-    cursor: pointer; /* Changes the cursor to the pointer hand */
-    transition: background-color 0.3s; /* Smooth transition for the background */
-    z-index: 2; /* Higher than the container to bring it forward */
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    z-index: 2; 
 }
 
 .gallery-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Align to the start to handle odd numbers of images */
+    justify-content: flex-start; 
     gap: 10px;
-    margin: -10px; /* Offset for negative margins on gallery items */
+    margin: -10px; 
 }
   
 .gallery-item {
@@ -491,71 +494,71 @@ h1 {
 
 .image {
     width: 100%;
-    height: 200px; /* Fixed height */
+    height: 200px; 
     border-radius: 12px;
     object-fit: cover;
     display: block;
 }
   
 .gallery-item:hover {
-transform: scale(1.03); /* Slightly scale up image on hover */
-box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Larger shadow for hover effect */
+    transform: scale(1.03); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
 }
 
 .star {
-position: absolute;
-bottom: 10px;
-right: 10px;
-font-size: 30px; /* Adjust the size of the star as needed */
-color: #794d4d; /* White color */
-cursor: pointer;
-z-index: 10;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 30px; 
+    color: #794d4d; 
+    cursor: pointer;
+    z-index: 10;
 }
   
 .star-icon {
     position: absolute;
     bottom: 8px;
     right: 8px;
-    font-size: 24px; /* Size of the star icon */
-    color: #05050593; /* Start with black color for the star */
+    font-size: 24px; 
+    color: #05050593; 
     cursor: pointer;
     z-index: 2;
-    user-select: none; /* Prevents the text selection cursor */
+    user-select: none; 
 }
 
 .star:hover {
-color: #ffd700; /* Gold color on hover */
+    color: #ffd700; 
 }
 
 .star-icon.favorited {
-    color: #ffbf00; /* Gold color when favorited */
+    color: #ffbf00; 
 }
 
-  /* The Modal (background) */
+/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 9999; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none; 
+    position: fixed; 
+    z-index: 9999;
+    padding-top: 100px; 
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.9); 
   }
   
-  /* Modal Content (image) */
-  .modal-content {
+/* Modal Content (image) */
+.modal-content {
     margin: auto;
     display: block;
     width: 80%;
     max-width: 700px;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+/* The Close Button */
+.close {
     position: absolute;
     top: 50px;
     right: 35px;
@@ -563,57 +566,56 @@ color: #ffd700; /* Gold color on hover */
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-  }
+}
   
-  /* Add Animation - Zoom in the Modal */
-  .modal-content {
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
+/* Add Animation - Zoom in the Modal */
+.modal-content {
+-webkit-animation-name: zoom;
+-webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
-  }
+}
 
-  .filter-bar {
+.filter-bar {
     display: flex;
     overflow-x: auto;
     margin-bottom: 20px;
     gap: 5px;
-  }
-  
-  .filter-bar button {
-    flex: 0 0 auto; /* Prevent buttons from stretching */
+}
+
+.filter-bar button {
+    flex: 0 0 auto; 
     padding: 10px;
     margin-right: 5px;
     border: 1px solid #ccc;
     background: #F5AA66;
     border-radius: 20px;
-    cursor: pointer; /* Indicates a clickable item */
-    outline: none; /* Removes the outline to improve the styling */
-    transition: background-color 0.3s; /* Smooth background color transition */
-  }
+    cursor: pointer; 
+    outline: none; 
+    transition: background-color 0.3s; 
+}
   
-  .filter-bar button:hover,
-  .filter-bar button.active { /* Added .active class for clicked state */
-    background-color: #EB7A53; /* Orange color on hover and active */
-  }
+.filter-bar button:hover,
+.filter-bar button.active { 
+    background-color: #EB7A53;
+}
+
+.filter-bar button:not(:hover):not(.active) {
+    background-color: #F5AA66; 
+}
   
-  /* Optional: If you want to remove the background color when not active/hovered */
-  .filter-bar button:not(:hover):not(.active) {
-    background-color: #F5AA66; /* Original background color */
-  }
-  
-  .upload-bar {
+.upload-bar {
     display: flex;
-    justify-content: flex-start; /* Align items to the start */
-    margin-bottom: 10px; /* Space between this and the filter bar */
-    gap: 5px; /* Consistent spacing between buttons if more are added */
+    justify-content: flex-start; 
+    margin-bottom: 10px; 
+    gap: 5px; 
 }
 
 .upload-button {
-    flex: 0 0 auto; /* Prevent stretching */
+    flex: 0 0 auto; 
     padding: 10px;
     border: 1px solid #ccc;
-    background: #F5AA66; /* Light orange, similar to other buttons */
+    background: #F5AA66; 
     border-radius: 20px;
     cursor: pointer;
     outline: none;
@@ -621,7 +623,7 @@ color: #ffd700; /* Gold color on hover */
 }
 
 .upload-button:hover {
-    background-color: #EB7A53; /* Darker shade on hover */
+    background-color: #EB7A53; 
 }
 
   
@@ -639,8 +641,8 @@ color: #ffd700; /* Gold color on hover */
   /* Responsive adjustments for smaller screens */
   @media (max-width: 600px) {
     .gallery-item {
-        width: calc(50% - 10px); /* Two images per row on smaller screens */
-        max-height: 150px; /* Adjust the height on smaller screens */
+        width: calc(50% - 10px); 
+        max-height: 150px; 
     }
 }
    
@@ -648,90 +650,58 @@ color: #ffd700; /* Gold color on hover */
 /* ------ creative mode ------- */
 .creative-mode-container {
     position: relative;
-    background-color: #eb7a53; /* Use a light background */
-    color: #000; /* Dark text color for readability */
-    border-radius: 20px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
-    margin: 10px auto; /* Center the container on the page */
-    max-width: 500px; /* Set a max width for the content */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    background-color: #eb7a53; 
+    color: #000; 
+    border-radius: 20px; 
+    padding: 20px; 
+    margin: 10px auto; 
+    max-width: 500px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
     z-index: 1;
 }
 
 .creative-mode-container h1 {
-    font-size: 2.6em; /* Larger font size for the heading */
-    font-weight: normal; /* Normal font weight */
-    margin-bottom: 0.6em; /* Space below the heading */
-    margin-top: 1.5em; /* Space above the heading */
-    text-align: left; /* Align the heading to the left */
+    font-size: 2.6em; 
+    font-weight: normal; 
+    margin-bottom: 0.6em; 
+    margin-top: 1.5em; 
+    text-align: left; 
 }
 
 .back-button-creative-mode {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* or 'relative' depending on your layout */
-    top: 20px; /* Position it above the container */
+    position: absolute; 
+    top: 20px; 
     left: 4px;
     padding: 10px;
-    background-color: #eb7a53; /* Arrow background - white */
-    color: #000000; /* Arrow color - black */
-    border-radius: 50%; /* Make it circular */
-    width: 40px; /* Size of the button */
-    height: 40px; /* Size of the button */
-    font-size: 16px; /* Size of the arrow */
+    background-color: #eb7a53; 
+    color: #000000; 
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px; 
+    font-size: 16px;
     text-decoration: none;
-    cursor: pointer; /* Changes the cursor to the pointer hand */
-    transition: background-color 0.3s; /* Smooth transition for the background */
-    z-index: 2; /* Higher than the container to bring it forward */
-}
-
-/* Choose picture from file system button */
-.button-choose-file {
-    font: normal 16px 'Neue Regrade', sans-serif;
-    display: inline-block;
-    padding: 20px 24px;
-    margin: 10px;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #ffda79;
-}
-
-/* Take a new picture button */
-.button-take-picture {
-    font: normal 16px 'Neue Regrade', sans-serif;
-    display: inline-block;
-    padding: 20px 24px;
-    margin: 10px;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #99d882;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    z-index: 2; 
 }
 
 .thumbnails-container {
     display: flex;
-    justify-content: space-around; /* This will space the thumbnails evenly */
-    align-items: center; /* This will align thumbnails vertically */
-    flex-wrap: wrap; /* Allow thumbnails to wrap onto the next line on smaller screens */
-    margin: 20px 0; /* Add some vertical space around the thumbnails container */
+    justify-content: space-around; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    margin: 20px 0; 
 }
 
 .model-link {
-    flex: 1; /* Give each link a flexible width */
-    max-width: 120px; /* Maximum width for each thumbnail */
-    margin: 5px; /* Add a little margin around each thumbnail */
-    text-align: center; /* Center the text (and indirectly, the image) */
-    box-sizing: border-box; /* Include padding and borders in the width */
+    flex: 1; 
+    max-width: 120px;
+    margin: 5px; 
+    text-align: center; 
+    box-sizing: border-box; 
 }
 
 .model-option {
@@ -743,38 +713,35 @@ color: #ffd700; /* Gold color on hover */
 
 .emmibutton {
     padding: 15px;
-    background-color: #ffda79; /* Golden yellow background */
+    background-color: #ffda79; 
     border: none;
-    border-radius: 5px; /* Rounded corners for the button */
-    font-size: 16px; /* Font size of the button text */
-    color: #000; /* Black color for the text */
-    cursor: pointer; /* Cursor changes to pointer to indicate a clickable button */
-    transition: background-color 0.2s; /* Smooth transition for hover effect */
-    margin-top: 10px; /* Space above the submit button */
+    border-radius: 5px; 
+    font-size: 16px; 
+    color: #000; 
+    cursor: pointer; 
+    transition: background-color 0.2s; 
+    margin-top: 10px; 
 }
 
 .emmibutton:hover {
-    background-color: #e6c065; /* Darker shade when hovered */
+    background-color: #e6c065; 
 }
-
-
 
 /* ------ 3D models ------- */
 .model-option img {
-    width: 100px; /* Set a fixed width for the thumbnails */
-    cursor: pointer; /* Indicates that the image is draggable */
+    width: 100px; 
+    cursor: pointer; 
 }
 #imageContainer {
-    position: relative; /* Required for absolute positioning inside */
+    position: relative; 
 }
 .draggable-model {
-    position: absolute; /* Allow the model to be positioned over the image */
-    width: 100px; /* Set width for the draggable models */
-    cursor: move; /* Indicates that the model is movable */
+    position: absolute; 
+    width: 100px;
+    cursor: move; 
 }
 
 #buddha, #table, #armchair {
     width: 120px;
     height: auto;
 }
-

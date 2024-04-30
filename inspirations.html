@@ -53,115 +53,125 @@
                 <div class="star-icon" onclick="toggleFavorite(event, 'study3.jpg')">&#9733;</div>
             </div>
         </div>
-        <!-- The Modal -->
         <div id="myModal" class="modal">
-            <!-- The Close Button -->
             <span class="close">&times;</span>
-            <!-- Modal Content (The Image) -->
             <img class="modal-content" id="img01">
-            <!-- Modal Caption (Image Text) -->
             <div id="caption"></div>
         </div>
     </div>
     <script src="js/main.js"></script>
     <script>
-      var modal = document.getElementById('myModal');
-      var modalImg = document.getElementById('img01');
-      var captionText = document.getElementById('caption');
-      var span = document.getElementsByClassName('close')[0];
-      var fileInput = document.getElementById('imageUpload');
-
-      document.querySelectorAll('.gallery-item .image').forEach(function(image) {
-          image.onclick = function() {
-              modal.style.display = 'block';
-              modalImg.src = this.src;
-              captionText.innerHTML = this.alt;
-          };
-      });
-
-      span.onclick = function() {
-          modal.style.display = 'none';
-      };
-
-      function toggleFavorite(event, imageName) {
-          event.stopPropagation();
-          var star = event.target;
-          var isFavorited = star.classList.contains('favorited');
-          var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
-
-          if (isFavorited) {
-              star.classList.remove('favorited');
-              delete favorites[imageName];
-          } else {
-              star.classList.add('favorited');
-              favorites[imageName] = true;
-          }
-
-          localStorage.setItem('favorites', JSON.stringify(favorites));
-      }
-
-      function filterImages(category) {
-          var images = document.querySelectorAll('.gallery-item');
-          images.forEach(function(image) {
-              if (category === 'all' || image.dataset.category === category) {
-                  image.style.display = 'inline-block';
-              } else {
-                  image.style.display = 'none';
-              }
-          });
-      }
-
-      function addImageToGallery() {
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStarStatus();            
+            loadImagesFromLocalStorage(); 
+            filterImages('all');          
+            if (localStorage.getItem('triggerUpload') === 'true') {
+                document.getElementById('imageUpload').click();
+                localStorage.removeItem('triggerUpload');
+            }
+        });
+        
+        var modal = document.getElementById('myModal');
+        var modalImg = document.getElementById('img01');
+        var captionText = document.getElementById('caption');
+        var span = document.getElementsByClassName('close')[0];
+        var fileInput = document.getElementById('imageUpload');
+        
+        span.onclick = function() {
+            modal.style.display = 'none';
+        };
+        
+        function toggleFavorite(event, imageName) {
+            event.stopPropagation();
+            var star = event.target;
+            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+        
+            var img = star.parentNode.querySelector('img');
+            var imageKey = imageName || img.src.split('/').pop(); 
+        
+            if (favorites[imageKey]) {
+                delete favorites[imageKey];
+                star.classList.remove('favorited');
+                star.innerHTML = '&#9734;'; 
+            } else {
+                favorites[imageKey] = true;
+                star.classList.add('favorited');
+                star.innerHTML = '&#9733;'; 
+            }
+        
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+        
+        function updateStarStatus() {
+            var favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+            document.querySelectorAll('.gallery-item .star-icon').forEach(star => {
+                var img = star.parentNode.querySelector('img');
+                var imageKey = img.alt || img.src.split('/').pop();
+                if (favorites[imageKey]) {
+                    star.classList.add('favorited');
+                    star.innerHTML = '&#9733;';
+                } else {
+                    star.classList.remove('favorited');
+                    star.innerHTML = '&#9734;'; 
+                }
+            });
+        }
+        
+        function filterImages(category) {
+            var images = document.querySelectorAll('.gallery-item');
+            images.forEach(image => {
+                image.style.display = (category === 'all' || image.dataset.category === category) ? 'inline-block' : 'none';
+            });
+        }
+        
+        function addImageToGallery() {
             var file = fileInput.files[0];
             if (file && file.type.startsWith('image/')) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    
-                    var imgElement = document.createElement('img');
-                    imgElement.src = e.target.result;
-                    imgElement.alt = 'Uploaded Image';
-                    imgElement.className = 'image'; // Ensure it matches the class for styling
-
-                    var divElement = document.createElement('div');
-                    divElement.className = 'gallery-item';
-                    divElement.appendChild(imgElement);
-
-                    var starIcon = document.createElement('div');
-                    starIcon.className = 'star-icon';
-                    starIcon.innerHTML = '&#9733;';
-                    starIcon.onclick = function(event) {
-                        toggleFavorite(event, 'new-uploaded.jpg'); // Assumes handling of unique naming if needed
-                    };
-                    divElement.appendChild(starIcon);
-
-                    document.querySelector('.gallery-container').appendChild(divElement);
-
-                    // Attach the modal functionality to the new image
-                    imgElement.onclick = function() {
-                        modal.style.display = 'block';
-                        modalImg.src = this.src;
-                        captionText.innerHTML = this.alt;
-                    };
+                    var newImageName = 'uploaded_' + Date.now(); 
+                    saveImageToLocalStorage(e.target.result, newImageName);
+                    addNewImageToGallery(e.target.result, newImageName);
                 };
                 reader.readAsDataURL(file);
             } else {
                 alert('Please select an image file.');
             }
         }
-
-            fileInput.addEventListener('change', addImageToGallery);
-
-            document.addEventListener('DOMContentLoaded', function() {
-                filterImages('all');
-            });
-            document.addEventListener('DOMContentLoaded', function() {
-            // Check if we need to trigger the image upload
-            if (localStorage.getItem('triggerUpload') === 'true') {
-                document.getElementById('imageUpload').click(); // Trigger the file input click
-                localStorage.removeItem('triggerUpload'); // Clear the flag to avoid repeated triggers
-            }
-            filterImages('all'); // Existing function to filter images on load
-        });
-  </script>
+        
+        function saveImageToLocalStorage(data, name) {
+            var images = JSON.parse(localStorage.getItem('galleryImages')) || {};
+            images[name] = data;
+            localStorage.setItem('galleryImages', JSON.stringify(images));
+        }
+        
+        function addNewImageToGallery(src, imageName) {
+            var galleryContainer = document.querySelector('.gallery-container');
+            var imgElement = document.createElement('img');
+            imgElement.src = src;
+            imgElement.alt = imageName;
+            imgElement.className = 'image';
+        
+            var divElement = document.createElement('div');
+            divElement.className = 'gallery-item';
+            divElement.appendChild(imgElement);
+        
+            var starIcon = document.createElement('div');
+            starIcon.className = 'star-icon';
+            starIcon.innerHTML = '&#9734;'; 
+            starIcon.onclick = function(event) {
+                toggleFavorite(event, imageName);
+            };
+            divElement.appendChild(starIcon);
+        
+            galleryContainer.appendChild(divElement);
+        
+            imgElement.onclick = function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            };
+        }
+    </script>
 </body>
 </html>

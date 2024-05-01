@@ -28,7 +28,7 @@
         
             Object.keys(favorites).forEach(function(imageName) {
                 if (favorites[imageName]) {
-                    var imgSrc = localStorageImages[imageName] ? localStorageImages[imageName] : '../images/' + imageName;
+                    var imgSrc = localStorageImages[imageName] ? localStorageImages[imageName] : '/SquareSpaceAR/images/' + imageName;
                     var galleryItem = document.createElement('div');
                     galleryItem.className = 'gallery-item';
                     
